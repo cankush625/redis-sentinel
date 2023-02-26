@@ -1,0 +1,25 @@
+redis-primary:
+    image: redis
+    ports:
+        - 6379:6379
+    command: redis-server ./redis_config/high_availability/redis_primary.conf
+
+
+redis-replica:
+    image: redis
+    command: redis-server ./redis_config/high_availability/redis_replica.conf
+
+
+redis-sentinel-1:
+    image: redis
+    comamnd: redis-server ./redis_config/automatic_failover/sentinel1.conf --sentinel
+
+
+redis-sentinel-2:
+    image: redis
+    comamnd: redis-server ./redis_config/automatic_failover/sentinel2.conf --sentinel
+
+
+redis-sentinel-3:
+    image: redis
+    comamnd: redis-server ./redis_config/automatic_failover/sentinel3.conf --sentinel
